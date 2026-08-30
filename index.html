@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biarritz &amp; Paris, Septembre</title>
+<meta name="description" content="Biarritz and Paris, 19-27 September 2026 — bookings, open items, and a shared recommendations list.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=Karla:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#EFEDE6; --paper-2:#E5E2D9; --card:#FAF9F5;
+  --ink:#181A20; --ink-2:#4C505A; --ink-3:#7E828C;
+  --rule:#CBC7BB; --rule-soft:#DCD8CC;
+  --accent:#B03A2A; --accent-2:#1E6F63; --on-accent:#FBF7EF;
+  --ok-bg:#D9E7E0; --ok-fg:#1A5A4B;
+  --wait-bg:#F2E1C9; --wait-fg:#87560F;
+  --open-bg:#EEDAD4; --open-fg:#8E3320;
+  --shadow:0 1px 0 rgba(24,26,32,.04), 0 18px 34px -26px rgba(24,26,32,.5);
+  --maxw:1080px;
+}
+:root[data-city="paris"]{ --accent:#1E3D63; --accent-2:#96793F; }
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#131519; --paper-2:#191C22; --card:#1D2128;
+    --ink:#EAE7DF; --ink-2:#B0ACA2; --ink-3:#8A8690;
+    --rule:#33373F; --rule-soft:#262A31;
+    --accent:#E07A63; --accent-2:#5FB3A2; --on-accent:#141013;
+    --ok-bg:#1D3A33; --ok-fg:#8FD3BE;
+    --wait-bg:#3A2E1B; --wait-fg:#E3BC7C;
+    --open-bg:#3B241E; --open-fg:#EFA48C;
+    --shadow:0 1px 0 rgba(0,0,0,.3), 0 18px 34px -26px rgba(0,0,0,.9);
+  }
+  :root:not([data-theme="light"])[data-city="paris"]{ --accent:#8FB6E2; --accent-2:#D2B173; }
+}
+:root[data-theme="dark"]{
+  --paper:#131519; --paper-2:#191C22; --card:#1D2128;
+  --ink:#EAE7DF; --ink-2:#B0ACA2; --ink-3:#8A8690;
+  --rule:#33373F; --rule-soft:#262A31;
+  --accent:#E07A63; --accent-2:#5FB3A2; --on-accent:#141013;
+  --ok-bg:#1D3A33; --ok-fg:#8FD3BE;
+  --wait-bg:#3A2E1B; --wait-fg:#E3BC7C;
+  --open-bg:#3B241E; --open-fg:#EFA48C;
+  --shadow:0 1px 0 rgba(0,0,0,.3), 0 18px 34px -26px rgba(0,0,0,.9);
+}
+:root[data-theme="dark"][data-city="paris"]{ --accent:#8FB6E2; --accent-2:#D2B173; }
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Karla","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:16.5px; line-height:1.62; overflow-x:hidden;
+}
+h1,h2,h3,h4{margin:0;text-wrap:balance;font-weight:400;}
+p{margin:0;}
+a{color:var(--accent);}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,40px);}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums;}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);}
+
+.masthead{border-bottom:1px solid var(--rule);background:var(--paper-2);position:relative;overflow:hidden;}
+.masthead .wrap{position:relative;z-index:1;padding-top:clamp(30px,5vw,52px);padding-bottom:clamp(24px,4vw,34px);}
+.deco{position:absolute;right:-40px;top:-30px;width:380px;height:380px;opacity:.16;color:var(--accent);pointer-events:none;z-index:0;}
+.masthead-top{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:baseline;justify-content:space-between;}
+.trip-title{font-family:"Bodoni Moda",Didot,"Times New Roman",serif;font-size:clamp(38px,7.6vw,74px);line-height:.96;letter-spacing:-.015em;margin:16px 0 0;}
+.trip-title .amp{font-style:italic;color:var(--accent);padding:0 .04em;}
+.trip-sub{margin-top:14px;color:var(--ink-2);max-width:56ch;font-size:16px;}
+.stamps{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:22px;border-top:1px solid var(--rule-soft);padding-top:16px;}
+.stamp{display:flex;flex-direction:column;gap:2px;}
+.stamp .k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;}
+.stamp .v{font-size:14.5px;font-weight:500;font-family:"IBM Plex Mono",monospace;}
+
+.tabbar{background:var(--paper);border-bottom:1px solid var(--rule);}
+.tabbar .wrap{display:flex;}
+.tab{
+  background:none;border:0;border-bottom:2px solid transparent;
+  padding:16px 4px 13px;margin-right:34px;cursor:pointer;color:var(--ink-3);
+  font-family:"Bodoni Moda",Didot,serif;font-size:23px;
+  display:flex;align-items:baseline;gap:10px;
+}
+.tab .n{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;color:var(--ink-3);}
+.tab.on{color:var(--ink);border-bottom-color:var(--accent);}
+.tab.on .n{color:var(--accent);}
+
+.panel{padding-bottom:80px;}
+.panel.off{display:none;}
+section{padding-top:clamp(40px,6vw,66px);}
+.sec-head{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:26px;}
+.sec-head h2{font-family:"Bodoni Moda",Didot,serif;font-size:clamp(24px,3.6vw,34px);line-height:1.1;}
+.sec-head .rule-note{margin-left:auto;text-align:right;}
+
+.days{display:flex;flex-direction:column;}
+.day{display:grid;grid-template-columns:132px 1fr;gap:0 26px;padding:22px 0;border-top:1px solid var(--rule-soft);}
+.day:first-child{border-top:0;padding-top:0;}
+.daymark .dow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;}
+.daymark .dnum{font-family:"Bodoni Moda",Didot,serif;font-size:34px;line-height:1;margin-top:2px;}
+.daymark .mon{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-top:4px;}
+.entries{display:flex;flex-direction:column;gap:12px;min-width:0;}
+.entry{background:var(--card);border:1px solid var(--rule-soft);border-left:3px solid var(--accent);padding:14px 16px;box-shadow:var(--shadow);}
+.entry.muted{border-left-color:var(--rule);background:transparent;box-shadow:none;}
+.entry-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;}
+.entry h3{font-size:17.5px;font-weight:700;line-height:1.3;}
+.entry .when{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-2);white-space:nowrap;}
+.entry .detail{margin-top:6px;color:var(--ink-2);font-size:15px;}
+.entry .conf{margin-top:9px;display:inline-flex;align-items:center;gap:8px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.08em;color:var(--ink-3);border-top:1px dashed var(--rule);padding-top:8px;}
+.entry .conf b{color:var(--ink);letter-spacing:.12em;font-weight:600;}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;white-space:nowrap;}
+.chip.ok{background:var(--ok-bg);color:var(--ok-fg);}
+.chip.wait{background:var(--wait-bg);color:var(--wait-fg);}
+.chip.open{background:var(--open-bg);color:var(--open-fg);}
+.who{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;white-space:nowrap;border:1px solid var(--accent);color:var(--accent);}
+.who.all{border-color:var(--accent-2);color:var(--accent-2);}
+.who.unknown{border-color:var(--rule);color:var(--ink-3);}
+.leg{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:8px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-2);}
+.leg span{background:var(--paper-2);border:1px solid var(--rule-soft);padding:2px 8px;}
+
+.callout{border:1px solid var(--accent);background:var(--card);padding:18px 20px;box-shadow:var(--shadow);}
+.callout h3{font-family:"Bodoni Moda",Didot,serif;font-size:21px;line-height:1.2;}
+.callout p{margin-top:8px;color:var(--ink-2);font-size:15px;}
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:22px;}
+.opt{background:var(--card);border:1px solid var(--rule-soft);padding:18px 20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;}
+.opt.pick{border-color:var(--accent);}
+.opt-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.opt-head h3{font-family:"Bodoni Moda",Didot,serif;font-size:24px;}
+.pickchip{font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:var(--on-accent);padding:3px 8px;}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14.5px;margin:0;}
+.spec dt{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);padding-top:4px;}
+.spec dd{margin:0;color:var(--ink-2);}
+.spec dd b{color:var(--ink);font-weight:500;}
+
+.todo{list-style:none;margin:0;padding:0;}
+.todo li{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--rule-soft);}
+.todo .idx{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent);letter-spacing:.1em;padding-top:4px;}
+.todo .txt b{font-weight:700;}
+.todo .txt span{display:block;color:var(--ink-2);font-size:14.5px;margin-top:2px;}
+
+.reccat{margin-top:34px;}
+.reccat > h3{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);padding-bottom:8px;border-bottom:1px solid var(--rule-soft);}
+.recgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(266px,1fr));gap:0 28px;margin-top:4px;}
+.rec{padding:14px 0;border-bottom:1px solid var(--rule-soft);}
+.rec-top{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
+.rec h4{font-size:16px;font-weight:700;line-height:1.3;}
+.rec .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);}
+.rec .price{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent-2);letter-spacing:.06em;}
+.rec p{margin-top:4px;color:var(--ink-2);font-size:14.5px;}
+.rec .by{margin-top:6px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);}
+.rec .lnk{display:inline-block;margin-top:4px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;color:var(--accent);}
+.rec.added{border-left:2px solid var(--accent-2);padding-left:12px;}
+
+.addbox{margin-top:26px;border:1px dashed var(--rule);background:var(--paper-2);padding:18px 20px;}
+.addbox h3{font-family:"Bodoni Moda",Didot,serif;font-size:21px;}
+.addbox .hint{color:var(--ink-2);font-size:14.5px;margin-top:5px;}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:16px;}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0;}
+.field.wide{grid-column:1/-1;}
+.field label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);}
+.field input,.field select,.field textarea{font-family:"Karla",sans-serif;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--rule);padding:9px 11px;width:100%;}
+.field textarea{resize:vertical;min-height:62px;line-height:1.5;}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:14px;}
+.btn{cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:11px 20px;}
+.btn[disabled]{opacity:.45;cursor:default;}
+.status{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);letter-spacing:.06em;}
+.status.err{color:var(--accent);}
+.note-line{margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);letter-spacing:.04em;}
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px 34px;}
+.note h4{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);}
+.note p{margin-top:6px;color:var(--ink-2);font-size:14.8px;}
+
+.foot{border-top:1px solid var(--rule);margin-top:20px;padding:26px 0 60px;color:var(--ink-3);font-size:13.5px;}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;}
+
+@media (max-width:640px){
+  .day{grid-template-columns:1fr;gap:12px;}
+  .daymark{display:flex;align-items:baseline;gap:10px;}
+  .daymark .dnum{font-size:26px;}
+  .daymark .mon{margin-top:0;}
+  .recgrid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <svg class="deco" viewBox="0 0 300 300" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6">
+    <circle cx="150" cy="150" r="118"/>
+    <circle cx="150" cy="150" r="92"/>
+    <path d="M32 178c22-16 44-16 66 0s44 16 66 0 44-16 66 0 44 16 66 0"/>
+    <path d="M32 202c22-16 44-16 66 0s44 16 66 0 44-16 66 0 44 16 66 0"/>
+    <path d="M32 226c22-16 44-16 66 0s44 16 66 0 44-16 66 0 44 16 66 0"/>
+    <path d="M150 32v92M150 32l-26 34M150 32l26 34"/>
+  </svg>
+  <div class="wrap">
+    <div class="masthead-top">
+      <span class="eyebrow">19&ndash;27 September 2026</span>
+      <span class="eyebrow">Denver &rarr; Paris &rarr; Biarritz &rarr; Paris</span>
+    </div>
+    <h1 class="trip-title">Biarritz <span class="amp">&amp;</span> Paris</h1>
+    <p class="trip-sub">Confirmed bookings, open items, and a shared recommendations list. Anyone with this link can add a recommendation at the bottom of either tab.</p>
+    <div class="stamps">
+      <div class="stamp"><span class="k">Biarritz</span><span class="v">20&ndash;24 Sept</span></div>
+      <div class="stamp"><span class="k">Paris</span><span class="v">24&ndash;27 Sept</span></div>
+      <div class="stamp"><span class="k">United</span><span class="v">E2SVY3</span></div>
+      <div class="stamp"><span class="k">Air France</span><span class="v">Y2ETRF</span></div>
+      <div class="stamp"><span class="k">Le Garage</span><span class="v">GQ80147307068</span></div>
+      <div class="stamp"><span class="k">Cayr&eacute;</span><span class="v">ARMXDTEM-1</span></div>
+      <div class="stamp"><span class="k">TGV</span><span class="v">QP9MHJ</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabbar">
+  <div class="wrap">
+    <button class="tab on" id="tab-biarritz" data-city="biarritz"><span class="n">I</span> Biarritz</button>
+    <button class="tab" id="tab-paris" data-city="paris"><span class="n">II</span> Paris</button>
+  </div>
+</nav>
+
+<main>
+<div class="panel" id="panel-biarritz">
+  <div class="wrap">
+
+    <section>
+      <div class="sec-head">
+        <h2>Itinerary</h2>
+        <span class="eyebrow rule-note">19&ndash;24 September</span>
+      </div>
+      <div class="days">
+
+        <article class="day">
+          <div class="daymark"><span class="dow">Sat</span><span class="dnum">19</span><span class="mon">Sept</span></div>
+          <div class="entries">
+            <div class="entry">
+              <div class="entry-top">
+                <h3>United &mdash; Denver to Paris</h3>
+                <span class="who">Christa</span>
+                <span class="chip ok">Booked</span>
+              </div>
+              <div class="leg">
+                <span>DEN 1:25 PM &rarr; ORD 5:05 PM</span>
+                <span>ORD 6:10 PM &rarr; CDG</span>
+              </div>
+              <div class="conf">Confirmation <b>E2SVY3</b></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <div class="daymark"><span class="dow">Sun</span><span class="dnum">20</span><span class="mon">Sept</span></div>
+          <div class="entries">
+            <div class="entry">
+              <div class="entry-top">
+                <h3>Arrive Paris CDG</h3>
+                <span class="when">9:20 AM</span>
+                <span class="who">Christa</span>
+                <span class="chip ok">Booked</span>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-top">
+                <h3>Air France &mdash; CDG to Biarritz</h3>
+                <span class="when">12:50 PM &rarr; 2:20 PM</span>
+                <span class="who">Christa</span>
+                <span class="chip ok">Booked</span>
+              </div>
+              <div class="conf">Confirmation <b>Y2ETRF</b></div>
+            </div>
+            <div class="entry">
+              <div class="entry-top">
+                <h3>Le Garage Biarritz</h3>
+                <span class="when">20&ndash;24 Sept</span>
+                <span class="who">Christa</span>
+                <span class="chip ok">Booked</span>
+              </div>
+              <div class="conf">Confirmation <b>GQ80147307068</b></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <div class="daymark"><span class="dow">Mon</span><span class="dnum">21</span><span class="mon">Sept</span></div>
+          <div class="entries">
+            <div class="entry">
+              <div class="entry-top">
+                <h3>Massage &mdash; Regina Experimental</h3>
+                <span class="when">12:00 PM</span>
+                <span class="who">Christa</span>
+                <span class="chip ok">Booked</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <div class="daymark"><span class="dow">Tue</span><span class="dnum">22</span><span class="mon">Sept</span></div>
+          <div class="entries">
+            <div class="entry">
+              <div class="entry-top">
+                <h3>Group surf lesson &mdash; Biarritz Surf Ocean</h3>
+                <span class="chip wait">Requested</span>
+              </div>
+              <p class="detail">Requested; awaiting confirmation.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <div class="daymark"><span class="dow">Wed</span><span class="dnum">23</span><span class="mon">Sept</span></div>
+          <div class="entries">
+            <div class="entry muted">
+              <div class="entry-top"><h3>Nothing booked</h3></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <div class="daymark"><span class="dow">Thu</span><span class="dnum">24</span><span class="mon">Sept</span></div>
+          <div class="entries">
+            <div class="entry">
+              <div class="entry-top">
+                <h3>TGV INOUI &mdash; Biarritz to Paris Montparnasse</h3>
+                <span class="when">9:54 AM &rarr; 2:22 PM</span>
+                <span class="who">Christa</span>
+                <span class="chip ok">Booked</span>
+              </div>
+              <div class="leg">
+                <span>4h 28m direct</span>
+                <span>First class</span>
+                <span>&euro;149</span>
+              </div>
+              <p class="detail">Times are French local. Arrives Montparnasse Hall 1&ndash;2, about 10 minutes from the hotel, right at the 15:00 check-in.</p>
+              <div class="conf">Reference <b>QP9MHJ</b> &middot; WEAVING</div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <h2>Getting to Paris</h2>
+        <span class="eyebrow rule-note">Thursday 24 September</span>
+      </div>
+      <div class="compare">
+        <div class="opt pick">
+          <div class="opt-head"><h3>TGV INOUI</h3><span class="pickchip">Booked</span></div>
+          <dl class="spec">
+            <dt>Route</dt><dd>Biarritz &rarr; <b>Paris Montparnasse</b>, Hall 1&ndash;2. Direct.</dd>
+            <dt>Depart</dt><dd><b>9:54 AM</b>, Thursday 24 September</dd>
+            <dt>Arrive</dt><dd><b>2:22 PM</b> &mdash; 4h 28m</dd>
+            <dt>Class</dt><dd>First. One passenger. &euro;149.</dd>
+            <dt>Reference</dt><dd><b>QP9MHJ</b>, booked as WEAVING</dd>
+            <dt>Then</dt><dd>Montparnasse is about 10 minutes from the Cayr&eacute;, landing you there right at the 15:00 check-in.</dd>
+          </dl>
+        </div>
+        <div class="opt">
+          <div class="opt-head"><h3>Before you go</h3></div>
+          <dl class="spec">
+            <dt>The time</dt><dd><b>9:54 AM is French local time</b> (CEST). SNCF Connect never converts to your timezone &mdash; this is the time on the ticket and the platform board. France is 8 hours ahead of Denver on this date.</dd>
+            <dt>Getting there</dt><dd>Biarritz-La N&eacute;gresse station is about 3 km from the town centre, a &euro;15&ndash;25 taxi. Leave Le Garage by roughly 9:15.</dd>
+            <dt>Strikes</dt><dd>A recurring risk on French rail. SNCF publishes revised timetables 48&ndash;72 hours ahead if one lands &mdash; worth checking the week before.</dd>
+            <dt>Trainline</dt><dd>Its US site was showing these trains an hour off. Ignore it; SNCF Connect is the source of truth.</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <h2>Recommendations</h2>
+        <span class="eyebrow rule-note">Biarritz &amp; the Basque coast</span>
+      </div>
+
+      <div class="reccat">
+        <h3>Dining</h3>
+        <div class="recgrid">
+          <div class="rec"><div class="rec-top"><h4>Chez Albert</h4><span class="tag">Vieux Port</span><span class="price">&euro;&euro;&euro;</span></div><p>Seafood on the old port. Plateau de fruits de mer. Reserve by phone.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Les Rosiers</h4><span class="tag">Two Michelin stars</span><span class="price">&euro;&euro;&euro;&euro;</span></div><p>Andr&eacute;e Rosier. Basque-French tasting menu. Reserve well ahead.</p></div>
+          <div class="rec"><div class="rec-top"><h4>L'Impertinent</h4><span class="tag">One Michelin star</span><span class="price">&euro;&euro;&euro;&euro;</span></div><p>Fabian Feldmann. Tasting menus &euro;108&ndash;190 depending on courses and pairing.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Bar Basque</h4><span class="tag">Pintxos</span><span class="price">&euro;&euro;</span></div><p>Pintxos and cocktails, open until 2 AM. No reservation.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Bistrot de l'Hu&icirc;tre</h4><span class="tag">By Les Halles</span><span class="price">&euro;&euro;</span></div><p>Stand-up oyster counter beside the market. Walk-in.</p></div>
+          <div class="rec"><div class="rec-top"><h4>La Marine</h4><span class="tag">Vieux Port</span><span class="price">&euro;&euro;</span></div><p>Small seafood bistro. Fish of the day. Reservation recommended.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Blue Cargo</h4><span class="tag">Bidart, 10 min</span><span class="price">&euro;&euro;&euro;</span></div><p>Ocean-view terrace at Ilbarritz. Under new ownership since early 2026 &mdash; confirm hours.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Restaurant at Le Garage</h4><span class="tag">On site</span><span class="price">&euro;&euro;&euro;</span></div><p>Basque-accented bistro at the hotel. Book ahead in season.</p></div>
+        </div>
+      </div>
+
+      <div class="reccat">
+        <h3>Bars &amp; ap&eacute;ro</h3>
+        <div class="recgrid">
+          <div class="rec"><div class="rec-top"><h4>Biarritz Bonheur</h4><span class="tag">Rooftop</span></div><p>Covered rooftop pavilion over the Grande Plage. Opened May 2025.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Roc Seven</h4><span class="tag">Port-Vieux</span></div><p>Two ocean-facing rooftops, tapas, DJ sets.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Epic</h4><span class="tag">C&ocirc;te des Basques</span></div><p>Rooftop facing the sunset and Villa Belza.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Transat Sky Bar</h4><span class="tag">Radisson Blu</span></div><p>Hotel rooftop with Atlantic views.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Olatua</h4><span class="tag">Atalaye gardens</span></div><p>Casual bar-snack spot on the water.</p></div>
+        </div>
+      </div>
+
+      <div class="reccat">
+        <h3>Things to do</h3>
+        <div class="recgrid">
+          <div class="rec"><div class="rec-top"><h4>Rocher de la Vierge</h4></div><p>Footbridge to the statue rock. Best panoramic view in town.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Les Halles de Biarritz</h4></div><p>Covered market, 1885. Basque cheese, charcuterie, market lunch.</p></div>
+          <div class="rec"><div class="rec-top"><h4>C&ocirc;te des Basques</h4></div><p>The surf beach under the cliffs. Likely site of the group lesson.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Port Vieux to Villa Belza</h4></div><p>Cliff path linking the harbour, lighthouse and beach.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Milady Beach</h4></div><p>Quieter beach south of town.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Thalasso at Le Miramar</h4></div><p>Louison Bobet seawater institute, adjacent to Le Garage.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Cit&eacute; de l'Oc&eacute;an</h4></div><p>Interactive ocean-science and surf-culture museum.</p></div>
+        </div>
+      </div>
+
+      <div class="reccat">
+        <h3>Day trips</h3>
+        <div class="recgrid">
+          <div class="rec"><div class="rec-top"><h4>San Sebasti&aacute;n</h4><span class="tag">45 min, Spain</span></div><p>La Concha, Old Town pintxos, Monte Igueldo.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Saint-Jean-de-Luz</h4><span class="tag">20 min</span></div><p>Harbour town with a sheltered beach.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Bayonne</h4><span class="tag">25 min</span></div><p>Old town, chocolate houses, covered market.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Espelette</h4><span class="tag">30 min</span></div><p>The red-pepper village. Small market, 17th-century church.</p></div>
+        </div>
+      </div>
+
+      <div class="reccat">
+        <h3>Added by the group</h3>
+        <div class="recgrid" data-live="biarritz"></div>
+        <p class="note-line" data-empty="biarritz">Loading&hellip;</p>
+      </div>
+
+      <div class="addbox">
+        <h3>Add a recommendation</h3>
+        <p class="hint">Anyone with this link can add to the Biarritz list. It appears for everyone.</p>
+        <form class="form" data-form="biarritz">
+          <div class="field">
+            <label for="b-name">Place</label>
+            <input id="b-name" name="place" type="text" maxlength="120" required>
+          </div>
+          <div class="field">
+            <label for="b-cat">Category</label>
+            <select id="b-cat" name="category">
+              <option>Dining</option>
+              <option>Bars &amp; nightlife</option>
+              <option>Entertainment</option>
+              <option>Culture</option>
+              <option>Shopping</option>
+              <option>Wellness &amp; spa</option>
+              <option>Flights &amp; transport</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="b-by">Submitted by</label>
+            <select id="b-by" name="submitter">
+              <option value="">Choose&hellip;</option>
+              <option>Christa</option><option>Jill</option><option>Nadia</option><option>Megan</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="b-link">Link (optional)</label>
+            <input id="b-link" name="link" type="url" maxlength="300" placeholder="https://">
+          </div>
+          <div class="field wide">
+            <label for="b-note">Why</label>
+            <textarea id="b-note" name="note" maxlength="500"></textarea>
+          </div>
+        </form>
+        <div class="actions">
+          <button class="btn" data-add="biarritz">Add to Biarritz</button>
+          <span class="status" data-status="biarritz"></span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><h2>Practical</h2></div>
+      <div class="notes">
+        <div class="note"><h4>Weather</h4><p>Late September highs around 21&ndash;22&deg;C, lows in the low teens. September is the driest month on this coast.</p></div>
+        <div class="note"><h4>Tipping</h4><p>Service is included by law. Rounding up is normal; percentage tipping is not expected.</p></div>
+        <div class="note"><h4>Language</h4><p>French throughout, with Basque signage and culture layered on top.</p></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div class="panel off" id="panel-paris">
+  <div class="wrap">
+
+    <section>
+      <div class="sec-head">
+        <h2>Open items</h2>
+        <span class="eyebrow rule-note">Needs a decision</span>
+      </div>
+      <ol class="todo">
+        <li><span class="idx">01</span><span class="txt"><b>Jill, Nadia and Megan's flights</b><span>Not supplied. Send them to me and I'll tag them here.</span></span></li>
+        <li><span class="idx">02</span><span class="txt"><b>Gigi reservation</b><span>Books two weeks out. See the note below.</span></span></li>
+      </ol>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <h2>The party</h2>
+        <span class="eyebrow rule-note">Four</span>
+      </div>
+      <div class="compare">
+        <div class="opt pick">
+          <div class="opt-head"><h3>Le Grand H&ocirc;tel Cayr&eacute;</h3><span class="pickchip">Booked</span></div>
+          <dl class="spec">
+            <dt>Nights</dt><dd><b>24&ndash;27 September</b>, three nights.</dd>
+            <dt>Room</dt><dd>La Chambre Classic, city view. Two adults.</dd>
+            <dt>In / out</dt><dd>Check in <b>15:00</b>, check out <b>11:00</b>.</dd>
+            <dt>Confirmation</dt><dd><b>ARMXDTEM-1</b></dd>
+            <dt>Booked by</dt><dd>Christa</dd>
+            <dt>Where</dt><dd>Boulevard Raspail, 7e. Saint-Germain.</dd>
+          </dl>
+        </div>
+        <div class="opt">
+          <div class="opt-head"><h3>Who's coming</h3></div>
+          <dl class="spec">
+            <dt>Christa</dt><dd>Arriving from Biarritz 24 Sept, travel not yet booked. Home 27 Sept on UA 914 / UA 395.</dd>
+            <dt>Jill</dt><dd>Simonson. <b>Flights not supplied.</b></dd>
+            <dt>Nadia</dt><dd>Bruener. <b>Flights not supplied.</b></dd>
+            <dt>Megan</dt><dd>Adams. <b>Flights not supplied.</b></dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <h2>Itinerary</h2>
+        <span class="eyebrow rule-note">24&ndash;27 September</span>
+      </div>
+      <div class="days">
+        <article class="day">
+          <div class="daymark"><span class="dow">Thu</span><span class="dnum">24</span><span class="mon">Sept</span></div>
+          <div class="entries">
+            <div class="entry">
+              <div class="entry-top"><h3>Arrive from Biarritz</h3><span class="who">Christa</span><span class="chip open">Not booked</span></div>
+            </div>
+            <div class="entry muted">
+              <div class="entry-top"><h3>Arrivals</h3><span class="who unknown">Jill &middot; Nadia &middot; Megan</span><span class="chip open">Not supplied</span></div>
+            </div>
+            <div class="entry">
+              <div class="entry-top"><h3>Check in &mdash; Le Grand H&ocirc;tel Cayr&eacute;</h3><span class="when">15:00</span><span class="who">Christa</span><span class="chip ok">Booked</span></div>
+              <div class="conf">Confirmation <b>ARMXDTEM-1</b></div>
+            </div>
+          </div>
+        </article>
+        <article class="day">
+          <div class="daymark"><span class="dow">Fri</span><span class="dnum">25</span><span class="mon">Sept</span></div>
+          <div class="entries">
+            <div class="entry muted">
+              <div class="entry-top"><h3>Nothing booked</h3><span class="who all">All four</span></div>
+            </div>
+          </div>
+        </article>
+        <article class="day">
+          <div class="daymark"><span class="dow">Sat</span><span class="dnum">26</span><span class="mon">Sept</span></div>
+          <div class="entries">
+            <div class="entry muted">
+              <div class="entry-top"><h3>Nothing booked</h3><span class="who all">All four</span></div>
+            </div>
+          </div>
+        </article>
+        <article class="day">
+          <div class="daymark"><span class="dow">Sun</span><span class="dnum">27</span><span class="mon">Sept</span></div>
+          <div class="entries">
+            <div class="entry">
+              <div class="entry-top"><h3>Leave for CDG</h3><span class="when">~8:15 AM</span><span class="who">Christa</span></div>
+              <p class="detail">Checkout is 11:00, but the flight doesn't allow it &mdash; leave Saint-Germain around 8:15 to be at CDG three hours ahead.</p>
+            </div>
+            <div class="entry">
+              <div class="entry-top"><h3>UA 914 &mdash; Paris to Washington</h3><span class="when">12:25 PM &rarr; 2:55 PM</span><span class="who">Christa</span><span class="chip ok">Booked</span></div>
+              <div class="leg">
+                <span>CDG &rarr; IAD</span>
+                <span>8h 30m</span>
+                <span>Seat 30G</span>
+              </div>
+              <div class="conf">Confirmation <b>E2SVY3</b></div>
+            </div>
+            <div class="entry">
+              <div class="entry-top"><h3>UA 395 &mdash; Washington to Denver</h3><span class="when">4:12 PM &rarr; 6:09 PM</span><span class="who">Christa</span><span class="chip ok">Booked</span></div>
+              <div class="leg">
+                <span>IAD &rarr; DEN</span>
+                <span>3h 57m</span>
+                <span>Seat 7F</span>
+              </div>
+              <div class="conf">Confirmation <b>E2SVY3</b></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <h2>Two nights being planned</h2>
+        <span class="eyebrow rule-note">24 or 25 September</span>
+      </div>
+      <div class="compare">
+        <div class="opt">
+          <div class="opt-head"><h3>Bar Hemingway, then Gigi</h3></div>
+          <dl class="spec">
+            <dt>Drinks</dt><dd><b>Bar Hemingway</b>, Ritz Paris, Place Vend&ocirc;me, 1er. Twenty-five seats; arrive at opening.</dd>
+            <dt>Dinner</dt><dd><b>Gigi</b>, avenue Montaigne, 8e.</dd>
+            <dt>Window</dt><dd>8:00&ndash;9:30 PM, <b>24 or 25 September</b>. Party of four.</dd>
+            <dt>Status</dt><dd><span class="chip wait">Watch pending</span></dd>
+            <dt>Books open</dt><dd>Two weeks ahead &mdash; approximately <b>10 September</b> for the 24th, <b>11 September</b> for the 25th.</dd>
+          </dl>
+        </div>
+        <div class="opt">
+          <div class="opt-head"><h3>Crazy Horse, then Bonnie</h3></div>
+          <dl class="spec">
+            <dt>Show</dt><dd><b>Crazy Horse</b>, avenue George V, 8e. About 90 minutes.</dd>
+            <dt>Dinner</dt><dd><b>Bonnie</b>, SO/ Paris, 4e.</dd>
+            <dt>Status</dt><dd><span class="chip wait">Under consideration</span></dd>
+            <dt>Note</dt><dd>The two venues are on opposite sides of the city. Sequence depends on which show time you take.</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:22px;">
+        <h3>Book restaurant tables before September.</h3>
+        <p>Paris Fashion Week SS27 runs 28 September to 6 October, opening the day after departure. Availability tightens in the days before it starts. Nothing else major falls on this weekend: Journ&eacute;es du Patrimoine is 19&ndash;20 September, Paris Design Week ends 19 September, and Nuit Blanche moved to June in 2026.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <h2>Recommendations</h2>
+        <span class="eyebrow rule-note">Paris</span>
+      </div>
+
+      <div class="reccat">
+        <h3>Dining</h3>
+        <div class="recgrid">
+          <div class="rec"><div class="rec-top"><h4>Septime</h4><span class="tag">11e</span><span class="price">&euro;&euro;&euro;&euro;</span></div><p>Books open exactly three weeks ahead at 10:00 Paris time and fill within minutes.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Table by Bruno Verjus</h4><span class="tag">12e</span><span class="price">&euro;&euro;&euro;&euro;</span></div><p>Two Michelin stars, 24 seats, market-driven tasting menu. Book a month or more ahead.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Le Servan</h4><span class="tag">11e</span><span class="price">&euro;&euro;&euro;</span></div><p>Neo-bistro, French technique with Filipino influences. Two to three weeks ahead.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Vif</h4><span class="tag">11e</span><span class="price">&euro;&euro;&euro;</span></div><p>Tight seasonal menu. Book about two weeks out.</p></div>
+          <div class="rec"><div class="rec-top"><h4>19 Saint Roch</h4><span class="tag">1er</span><span class="price">&euro;&euro;&euro;</span></div><p>Pierre Touitou. Neo-bistro at bistro prices.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Chez Janou</h4><span class="tag">3e</span><span class="price">&euro;&euro;</span></div><p>Proven&ccedil;al bistro near Place des Vosges. Good for a group. One to two weeks ahead.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Aux Deux Amis</h4><span class="tag">11e</span><span class="price">&euro;&euro;</span></div><p>Natural wine and small plates. Arrive early; limited booking.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Les Piqueurs</h4><span class="tag">18e</span><span class="price">&euro;&euro;</span></div><p>Rotating natural-wine list with charcuterie and cheese. Walk-in.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Bouillon Pigalle</h4><span class="tag">9e</span><span class="price">&euro;</span></div><p>Classic bouillon. No reservations; expect a queue.</p></div>
+          <div class="rec"><div class="rec-top"><h4>L'As du Fallafel</h4><span class="tag">4e</span><span class="price">&euro;</span></div><p>Rue des Rosiers. Counter service since 1979.</p></div>
+        </div>
+      </div>
+
+      <div class="reccat">
+        <h3>Bars</h3>
+        <div class="recgrid">
+          <div class="rec"><div class="rec-top"><h4>Bar Hemingway</h4><span class="tag">Ritz, 1er</span></div><p>Twenty-five seats, no reservations. Smart dress.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Little Red Door</h4><span class="tag">3e</span></div><p>Regular World's 50 Best Bars listing. Reserve Thursday to Saturday.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Le Syndicat</h4><span class="tag">10e</span></div><p>French spirits only. Near Canal Saint-Martin.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Danico</h4><span class="tag">2e</span></div><p>Menu-led cocktail bar from the Combat team.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Combat</h4><span class="tag">Pigalle</span></div><p>Natural wine and cocktails.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Candelaria</h4><span class="tag">3e</span></div><p>Taqueria in front, cocktail bar behind.</p></div>
+        </div>
+      </div>
+
+      <div class="reccat">
+        <h3>Culture &amp; neighbourhoods</h3>
+        <div class="recgrid">
+          <div class="rec"><div class="rec-top"><h4>Mus&eacute;e de la Chasse et de la Nature</h4><span class="tag">3e</span></div><p>Hunting and nature museum in a Marais mansion.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Bourse de Commerce</h4><span class="tag">1er</span></div><p>Pinault Collection under the glass dome.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Mus&eacute;e Rodin</h4><span class="tag">7e</span></div><p>Mansion and sculpture garden. Walking distance from the hotel.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Mus&eacute;e Carnavalet</h4><span class="tag">3e</span></div><p>History of Paris. Free entry to the permanent collection.</p></div>
+          <div class="rec"><div class="rec-top"><h4>March&eacute; des Enfants Rouges</h4><span class="tag">3e</span></div><p>Covered market dating to 1628. Food stalls.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Parc des Buttes-Chaumont</h4><span class="tag">19e</span></div><p>Cliffs, suspension bridge, temple folly. Belleville below.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Canal Saint-Martin</h4><span class="tag">10e</span></div><p>Iron footbridges, canal-side cafes, independent shops.</p></div>
+          <div class="rec"><div class="rec-top"><h4>Shakespeare and Company</h4><span class="tag">5e</span></div><p>English-language bookshop by Notre-Dame.</p></div>
+        </div>
+      </div>
+
+      <div class="reccat">
+        <h3>Added by the group</h3>
+        <div class="recgrid" data-live="paris"></div>
+        <p class="note-line" data-empty="paris">Loading&hellip;</p>
+      </div>
+
+      <div class="addbox">
+        <h3>Add a recommendation</h3>
+        <p class="hint">Anyone with this link can add to the Paris list. It appears for everyone.</p>
+        <form class="form" data-form="paris">
+          <div class="field">
+            <label for="p-name">Place</label>
+            <input id="p-name" name="place" type="text" maxlength="120" required>
+          </div>
+          <div class="field">
+            <label for="p-cat">Category</label>
+            <select id="p-cat" name="category">
+              <option>Dining</option>
+              <option>Bars &amp; nightlife</option>
+              <option>Entertainment</option>
+              <option>Culture</option>
+              <option>Shopping</option>
+              <option>Wellness &amp; spa</option>
+              <option>Flights &amp; transport</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="p-by">Submitted by</label>
+            <select id="p-by" name="submitter">
+              <option value="">Choose&hellip;</option>
+              <option>Christa</option><option>Jill</option><option>Nadia</option><option>Megan</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="p-link">Link (optional)</label>
+            <input id="p-link" name="link" type="url" maxlength="300" placeholder="https://">
+          </div>
+          <div class="field wide">
+            <label for="p-note">Why</label>
+            <textarea id="p-note" name="note" maxlength="500"></textarea>
+          </div>
+        </form>
+        <div class="actions">
+          <button class="btn" data-add="paris">Add to Paris</button>
+          <span class="status" data-status="paris"></span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><h2>Practical</h2></div>
+      <div class="notes">
+        <div class="note"><h4>Weather</h4><p>Late September highs near 20&deg;C, falling to about 12&deg;C after dark. Rain is likely at some point.</p></div>
+        <div class="note"><h4>Sunday</h4><p>Many restaurants and most shops close on Sunday. Confirm hours before planning the last day.</p></div>
+        <div class="note"><h4>Reservations</h4><p>TheFork and Zenchef for most restaurants, direct for the rest. Books typically open two to four weeks ahead.</p></div>
+        <div class="note"><h4>Transit</h4><p>Navigo Easy loaded with rides, or a multi-day pass. Confirm current fares.</p></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span class="mono">Biarritz &amp; Paris &middot; 19&ndash;27 September 2026</span>
+    <span class="mono">Recommendations are shared &mdash; anyone with the link can add.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var SB_URL = "https://afkjchshoktlmqrpopyk.supabase.co";
+  var SB_KEY = "sb_publishable_-prKRSiYudfdwYxC1o4Rbw_PZlcJt89";
+  var CITIES = ["biarritz","paris"];
+
+  /* ---- tabs ---- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+  function selectCity(city){
+    tabs.forEach(function(t){
+      var on = t.dataset.city === city;
+      t.classList.toggle("on", on);
+      var panel = document.getElementById("panel-" + t.dataset.city);
+      if(panel) panel.classList.toggle("off", !on);
+    });
+    document.documentElement.setAttribute("data-city", city);
+    try{ localStorage.setItem("bp-city", city); }catch(e){}
+  }
+  tabs.forEach(function(t){
+    t.addEventListener("click", function(){
+      selectCity(t.dataset.city);
+      window.scrollTo({ top: 0 });
+    });
+  });
+  var saved = "biarritz";
+  try{ saved = localStorage.getItem("bp-city") || "biarritz"; }catch(e){}
+  selectCity(saved === "paris" ? "paris" : "biarritz");
+
+  /* ---- remember who you are ---- */
+  var whoSelects = Array.prototype.slice.call(document.querySelectorAll('select[name="submitter"]'));
+  try{
+    var me = localStorage.getItem("bp-who");
+    if(me) whoSelects.forEach(function(s){ s.value = me; });
+  }catch(e){}
+  whoSelects.forEach(function(s){
+    s.addEventListener("change", function(){
+      try{ localStorage.setItem("bp-who", s.value); }catch(e){}
+      whoSelects.forEach(function(o){ if(o !== s) o.value = s.value; });
+    });
+  });
+
+  /* ---- shared list ---- */
+  function esc(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+  function setStatus(city, msg, isErr){
+    var el = document.querySelector('[data-status="' + city + '"]');
+    if(!el) return;
+    el.textContent = msg || "";
+    el.className = "status" + (isErr ? " err" : "");
+  }
+  function safeUrl(u){
+    if(!u) return "";
+    return /^https?:\/\//i.test(u) ? u : "";
+  }
+
+  function render(city, rows){
+    var grid = document.querySelector('[data-live="' + city + '"]');
+    var empty = document.querySelector('[data-empty="' + city + '"]');
+    if(!grid) return;
+    if(!rows.length){
+      grid.innerHTML = "";
+      if(empty){ empty.hidden = false; empty.textContent = "Nothing added yet."; }
+      return;
+    }
+    if(empty) empty.hidden = true;
+    grid.innerHTML = rows.map(function(r){
+      var link = safeUrl(r.link);
+      return '<div class="rec added">' +
+        '<div class="rec-top"><h4>' + esc(r.place) + '</h4>' +
+        (r.category ? '<span class="tag">' + esc(r.category) + '</span>' : '') +
+        '</div>' +
+        (r.note ? '<p>' + esc(r.note) + '</p>' : '') +
+        (link ? '<a class="lnk" href="' + esc(link) + '" target="_blank" rel="noopener noreferrer">Open link</a>' : '') +
+        '<div class="by">' + esc(r.submitter || "Unattributed") + '</div>' +
+        '</div>';
+    }).join("");
+  }
+
+  function load(){
+    return fetch(SB_URL + "/rest/v1/trip_recs?select=city,category,submitter,place,note,link,created_at&order=created_at.desc", {
+      headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY }
+    }).then(function(r){
+      if(!r.ok) throw new Error("load failed");
+      return r.json();
+    }).then(function(rows){
+      CITIES.forEach(function(city){
+        render(city, rows.filter(function(r){ return r.city === city; }));
+      });
+    }).catch(function(){
+      CITIES.forEach(function(city){
+        var empty = document.querySelector('[data-empty="' + city + '"]');
+        if(empty){ empty.hidden = false; empty.textContent = "Couldn't load the shared list. Reload to try again."; }
+      });
+    });
+  }
+  load();
+
+  CITIES.forEach(function(city){
+    var btn = document.querySelector('[data-add="' + city + '"]');
+    var form = document.querySelector('[data-form="' + city + '"]');
+    if(!btn || !form) return;
+
+    form.addEventListener("submit", function(e){ e.preventDefault(); btn.click(); });
+
+    btn.addEventListener("click", function(){
+      var place = form.elements.place.value.trim();
+      var submitter = form.elements.submitter.value;
+      if(!place){ setStatus(city, "Add a place name", true); form.elements.place.focus(); return; }
+      if(!submitter){ setStatus(city, "Choose who's submitting", true); form.elements.submitter.focus(); return; }
+
+      var body = {
+        city: city,
+        category: form.elements.category.value,
+        submitter: submitter,
+        place: place,
+        note: form.elements.note.value.trim() || null,
+        link: form.elements.link.value.trim() || null
+      };
+
+      btn.disabled = true;
+      setStatus(city, "Adding…");
+      fetch(SB_URL + "/rest/v1/trip_recs", {
+        method: "POST",
+        headers: {
+          apikey: SB_KEY,
+          Authorization: "Bearer " + SB_KEY,
+          "Content-Type": "application/json",
+          Prefer: "return=minimal"
+        },
+        body: JSON.stringify(body)
+      }).then(function(r){
+        if(!r.ok) throw new Error("save failed");
+        form.elements.place.value = "";
+        form.elements.note.value = "";
+        form.elements.link.value = "";
+        setStatus(city, "Added");
+        setTimeout(function(){ setStatus(city, ""); }, 2600);
+        return load();
+      }).catch(function(){
+        setStatus(city, "Couldn't save that. Try again.", true);
+      }).then(function(){ btn.disabled = false; });
+    });
+  });
+})();
+</script>
+</body>
+</html>
