@@ -358,6 +358,68 @@ body::before{ opacity:.75; }
   .days{ margin-top:6px; }
   .day{ padding:18px 0; }
 }
+
+/* ============ SECTION HEADERS: no box, bigger, in colour ============ */
+.sec-head{
+  border-bottom:1px solid color-mix(in srgb, var(--plaque) 30%, transparent);
+  padding-bottom:12px; margin-bottom:26px;
+  align-items:baseline; gap:16px;
+}
+.sec-head h2{
+  background:none; border:0; box-shadow:none; padding:0; border-radius:0;
+  color:var(--plaque);
+  font-family:"Bodoni Moda",Didot,"Times New Roman",serif;
+  font-weight:500;
+  font-size:clamp(32px,5vw,50px);
+  line-height:1.02;
+  letter-spacing:-.012em;
+}
+.sec-head .fr{ font-size:20px; color:var(--ink-3); }
+.sec-head .rule-note{ margin-left:auto; align-self:baseline; padding-bottom:0; text-align:right; }
+.reccat > h3{ font-size:11.5px; }
+
+@media (max-width:760px){
+  .sec-head{ gap:6px 12px; padding-bottom:10px; margin-bottom:18px; }
+  .sec-head h2{ font-size:clamp(27px,8.4vw,36px); }
+  .sec-head .fr{ font-size:16.5px; }
+  .sec-head .rule-note{ margin-left:0; text-align:left; flex-basis:100%; }
+}
+
+/* ============ SUB-NAV ============ */
+html{ scroll-behavior:smooth; }
+section, .addbox{ scroll-margin-top:22px; }
+.subnav{
+  display:flex; flex-wrap:wrap; align-items:center; gap:0 4px;
+  padding:16px 0 0; margin-bottom:-14px;
+}
+.subnav-link{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3); text-decoration:none;
+  padding:7px 11px; border:1px solid transparent; border-radius:3px;
+  transition:color .15s ease, border-color .15s ease, background .15s ease;
+  white-space:nowrap;
+}
+.subnav-link:hover{ color:var(--plaque); border-color:color-mix(in srgb, var(--plaque) 35%, transparent); }
+.subnav-link.add{
+  color:var(--plaque); border-color:color-mix(in srgb, var(--plaque) 45%, transparent);
+  font-weight:600; margin-left:6px;
+}
+.subnav-link.add::before{ content:"+ "; }
+.subnav-link.add:hover{ background:var(--plaque); color:var(--on-accent); border-color:var(--plaque); }
+
+@media (max-width:760px){
+  section, .addbox{ scroll-margin-top:64px; }
+  .subnav{
+    gap:0 2px; padding:12px 0 2px; margin:0 -18px -10px; padding-left:18px; padding-right:18px;
+    flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .subnav::-webkit-scrollbar{ display:none; }
+  .subnav-link{ font-size:10px; padding:8px 10px; }
+  .subnav-link.add{ margin-left:4px; }
+}
+@media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } }
 </style>
 </head>
 <body>
@@ -401,7 +463,9 @@ body::before{ opacity:.75; }
 <div class="panel" id="panel-biarritz">
   <div class="wrap">
 
-    <section>
+    <nav class="subnav" aria-label="Jump to section"><a class="subnav-link" href="#biarritz-itinerary">Itinerary</a><a class="subnav-link" href="#biarritz-getting-to-paris">Getting to Paris</a><a class="subnav-link" href="#biarritz-recommendations">Recommendations</a><a class="subnav-link" href="#biarritz-practical">Practical</a><a class="subnav-link add" href="#biarritz-add">Add an item</a></nav>
+
+    <section id="biarritz-itinerary">
       <div class="sec-head">
         <h2>Itinerary</h2>
         <span class="fr">L’itinéraire</span>
@@ -519,7 +583,7 @@ body::before{ opacity:.75; }
       </div>
     </section>
 
-    <section>
+    <section id="biarritz-getting-to-paris">
       <div class="sec-head">
         <h2>Getting to Paris</h2>
         <span class="fr">Monter à Paris</span>
@@ -549,7 +613,7 @@ body::before{ opacity:.75; }
       </div>
     </section>
 
-    <section>
+    <section id="biarritz-recommendations">
       <div class="sec-head">
         <h2>Recommendations</h2>
         <span class="fr">Les bonnes adresses</span>
@@ -564,12 +628,12 @@ body::before{ opacity:.75; }
         <p class="note-line" data-empty="biarritz">Loading&hellip;</p>
       </div>
 
-      <div class="addbox">
+      <div class="addbox" id="biarritz-add">
         <h3>Add a recommendation</h3>
         <p class="hint">Anyone with this link can add to the Biarritz list. It appears for everyone.</p>
         <form class="form" data-form="biarritz">
           <div class="field">
-            <label for="b-name">Place</label>
+            <label for="b-name">Item</label>
             <input id="b-name" name="place" type="text" maxlength="120" required>
           </div>
           <div class="field">
@@ -608,7 +672,7 @@ body::before{ opacity:.75; }
       </div>
     </section>
 
-    <section>
+    <section id="biarritz-practical">
       <div class="sec-head"><h2>Practical</h2>
         <span class="fr">À savoir</span></div>
       <div class="notes">
@@ -624,7 +688,9 @@ body::before{ opacity:.75; }
 <div class="panel off" id="panel-paris">
   <div class="wrap">
 
-    <section>
+    <nav class="subnav" aria-label="Jump to section"><a class="subnav-link" href="#paris-open-items">Open items</a><a class="subnav-link" href="#paris-the-party">The party</a><a class="subnav-link" href="#paris-itinerary">Itinerary</a><a class="subnav-link" href="#paris-two-nights-being-planned">The two nights</a><a class="subnav-link" href="#paris-recommendations">Recommendations</a><a class="subnav-link" href="#paris-practical">Practical</a><a class="subnav-link add" href="#paris-add">Add an item</a></nav>
+
+    <section id="paris-open-items">
       <div class="sec-head">
         <h2>Open items</h2>
         <span class="fr">À régler</span>
@@ -636,7 +702,7 @@ body::before{ opacity:.75; }
       </ol>
     </section>
 
-    <section>
+    <section id="paris-the-party">
       <div class="sec-head">
         <h2>The party</h2>
         <span class="fr">La bande</span>
@@ -667,7 +733,7 @@ body::before{ opacity:.75; }
       </div>
     </section>
 
-    <section>
+    <section id="paris-itinerary">
       <div class="sec-head">
         <h2>Itinerary</h2>
         <span class="fr">L’itinéraire</span>
@@ -756,7 +822,7 @@ body::before{ opacity:.75; }
       </div>
     </section>
 
-    <section>
+    <section id="paris-two-nights-being-planned">
       <div class="sec-head">
         <h2>Two nights being planned</h2>
         <span class="fr">Les deux soirées</span>
@@ -789,7 +855,7 @@ body::before{ opacity:.75; }
       </div>
     </section>
 
-    <section>
+    <section id="paris-recommendations">
       <div class="sec-head">
         <h2>Recommendations</h2>
         <span class="fr">Les bonnes adresses</span>
@@ -871,12 +937,12 @@ body::before{ opacity:.75; }
         <p class="note-line" data-empty="paris">Loading&hellip;</p>
       </div>
 
-      <div class="addbox">
+      <div class="addbox" id="paris-add">
         <h3>Add a recommendation</h3>
         <p class="hint">Anyone with this link can add to the Paris list. It appears for everyone.</p>
         <form class="form" data-form="paris">
           <div class="field">
-            <label for="p-name">Place</label>
+            <label for="p-name">Item</label>
             <input id="p-name" name="place" type="text" maxlength="120" required>
           </div>
           <div class="field">
@@ -915,7 +981,7 @@ body::before{ opacity:.75; }
       </div>
     </section>
 
-    <section>
+    <section id="paris-practical">
       <div class="sec-head"><h2>Practical</h2>
         <span class="fr">À savoir</span></div>
       <div class="notes">
@@ -1049,7 +1115,7 @@ body::before{ opacity:.75; }
     btn.addEventListener("click", function(){
       var place = form.elements.place.value.trim();
       var submitter = form.elements.submitter.value;
-      if(!place){ setStatus(city, "Add a place name", true); form.elements.place.focus(); return; }
+      if(!place){ setStatus(city, "Add an item first", true); form.elements.place.focus(); return; }
       if(!submitter){ setStatus(city, "Choose who's submitting", true); form.elements.submitter.focus(); return; }
 
       var body = {
