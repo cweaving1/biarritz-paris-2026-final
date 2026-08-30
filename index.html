@@ -6,9 +6,29 @@
 <title>Biarritz &amp; Paris, Septembre</title>
 <meta name="description" content="Biarritz and Paris, 19-27 September 2026 — bookings, open items, and a shared recommendations list.">
 <meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B5E3A">
+<meta name="apple-mobile-web-app-title" content="Biarritz &amp; Paris">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Biarritz &amp; Paris">
+<meta property="og:title" content="Biarritz &amp; Paris &middot; Septembre 2026">
+<meta property="og:description" content="Four nights on the Basque coast, then three in Paris. Bookings, open items, and a shared recommendations list.">
+<meta property="og:url" content="https://cweaving1.github.io/biarritz-paris-2026-final/">
+<meta property="og:image" content="https://cweaving1.github.io/biarritz-paris-2026-final/og-image.png">
+<meta property="og:image:secure_url" content="https://cweaving1.github.io/biarritz-paris-2026-final/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Biarritz and Paris, September 2026, with a line drawing of the Eiffel Tower">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Biarritz &amp; Paris &middot; Septembre 2026">
+<meta name="twitter:description" content="Four nights on the Basque coast, then three in Paris.">
+<meta name="twitter:image" content="https://cweaving1.github.io/biarritz-paris-2026-final/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=Karla:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=Karla:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
 :root{
   --paper:#EFEDE6; --paper-2:#E5E2D9; --card:#FAF9F5;
@@ -181,6 +201,163 @@ section{padding-top:clamp(40px,6vw,66px);}
   .daymark .mon{margin-top:0;}
   .recgrid{grid-template-columns:1fr;}
 }
+
+/* ============ LA COUCHE FRANÇAISE ============ */
+:root{ --plaque:#0B5E3A; --plaque-edge:#083F27; --gold:#C6A15B; }
+:root[data-city="paris"]{ --accent:#0B5E3A; --accent-2:#C6A15B; --plaque:#0B5E3A; }
+:root[data-city="biarritz"]{ --plaque:#8E2C20; --plaque-edge:#5E1C13; }
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){ --plaque:#127A4C; --plaque-edge:#0A4A2E; --gold:#D9B978; }
+  :root:not([data-theme="light"])[data-city="paris"]{ --accent:#5FC08F; --accent-2:#D9B978; --plaque:#127A4C; }
+  :root:not([data-theme="light"])[data-city="biarritz"]{ --plaque:#B0442F; --plaque-edge:#6E2418; }
+}
+:root[data-theme="dark"]{ --plaque:#127A4C; --plaque-edge:#0A4A2E; --gold:#D9B978; }
+:root[data-theme="dark"][data-city="paris"]{ --accent:#5FC08F; --accent-2:#D9B978; --plaque:#127A4C; }
+:root[data-theme="dark"][data-city="biarritz"]{ --plaque:#B0442F; --plaque-edge:#6E2418; }
+
+/* Seyes-ruled paper, the French school cahier */
+body{ position:relative; }
+body::before{
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background-image:
+    repeating-linear-gradient(to bottom, transparent 0 31px, color-mix(in srgb, var(--accent) 14%, transparent) 31px 32px),
+    repeating-linear-gradient(to right, transparent 0 31px, color-mix(in srgb, var(--accent) 7%, transparent) 31px 32px);
+  opacity:.5;
+}
+.masthead, .tabbar, .entry, .opt, .callout, .addbox{ position:relative; z-index:1; }
+
+/* Enamel Metro plaque section headers */
+.sec-head{ border-bottom:0; align-items:center; }
+.sec-head h2{
+  background:var(--plaque); color:#F6F2E6;
+  font-family:"Bodoni Moda",Didot,serif; font-weight:500;
+  font-size:clamp(19px,2.9vw,27px); line-height:1.05;
+  padding:14px 26px; border-radius:14px;
+  border:2px solid var(--plaque-edge);
+  box-shadow:inset 0 0 0 3px rgba(246,242,230,.85), inset 0 0 0 5px var(--plaque), 0 2px 0 rgba(0,0,0,.14);
+  letter-spacing:.01em;
+}
+.sec-head .rule-note{ align-self:flex-end; padding-bottom:4px; }
+
+/* French sub-label under the plaque */
+.fr{
+  font-family:"Cormorant Garamond",Didot,serif; font-style:italic;
+  font-size:17px; color:var(--ink-3); letter-spacing:.01em;
+}
+
+/* date rail as a numbered plate */
+.daymark .dow{ color:var(--accent); }
+.daymark .dnum{ color:var(--ink); }
+.daymark .mon{ font-size:9.5px; letter-spacing:.16em; }
+
+/* tickets */
+.chip{ border-radius:3px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.06); }
+.who{ border-radius:3px; }
+
+/* gold hairline above the stamps */
+.stamps{ border-top:1px solid var(--gold); }
+.stamp .v{ letter-spacing:.06em; }
+
+/* masthead double rule */
+.masthead{ border-bottom:3px double var(--plaque); }
+.trip-title .amp{ font-family:"Cormorant Garamond",Didot,serif; }
+
+/* tabs read as enamel too */
+.tab.on{ border-bottom-color:var(--plaque); }
+.tab.on .n{ color:var(--plaque); }
+
+/* buttons */
+.btn{ border-radius:3px; background:var(--plaque); border-color:var(--plaque-edge); }
+.opt.pick{ border-color:var(--plaque); }
+.pickchip{ background:var(--plaque); border-radius:3px; }
+.reccat > h3{ color:var(--plaque); }
+.note h4{ color:var(--plaque); }
+.todo .idx{ color:var(--plaque); }
+
+/* date rail: stack cleanly with the longer French month */
+.daymark{ display:flex; flex-direction:column; align-items:flex-start; padding-top:4px; }
+.daymark span{ display:block; }
+.daymark .dow{ font-size:10.5px; letter-spacing:.24em; }
+.daymark .dnum{ font-size:40px; line-height:.92; margin:2px 0 3px; }
+.daymark .mon{ font-size:9.5px; letter-spacing:.14em; }
+@media (max-width:640px){
+  .daymark{ flex-direction:row; align-items:baseline; gap:9px; }
+  .daymark .dnum{ font-size:27px; margin:0; }
+}
+/* a touch more cahier */
+body::before{ opacity:.75; }
+/* lighter, cleaner plaque */
+.sec-head h2{
+  padding:12px 24px; border-radius:11px; border-width:1.5px;
+  box-shadow:inset 0 0 0 2.5px rgba(246,242,230,.9), inset 0 0 0 4px var(--plaque), 0 1px 0 rgba(0,0,0,.12);
+}
+.sec-head{ gap:14px; flex-wrap:wrap; }
+
+/* ============ MOBILE ============ */
+@media (max-width:760px){
+  body{ font-size:16px; }
+  .wrap{ padding:0 18px; }
+  .trip-title{ font-size:clamp(34px,11vw,52px); }
+  .trip-sub{ font-size:15.5px; }
+  .masthead-top{ gap:6px; }
+  .masthead-top .eyebrow:last-child{ display:none; }
+  .deco{ width:230px; height:230px; right:-70px; top:-20px; opacity:.12; }
+  .stamps{ gap:10px 20px; }
+  .stamp .v{ font-size:13.5px; }
+
+  /* tabs: full-width, thumb-sized */
+  .tabbar{ position:sticky; top:0; z-index:30; }
+  .tabbar .wrap{ gap:0; }
+  .tab{ flex:1; justify-content:center; margin-right:0; padding:15px 6px 12px; font-size:20px; min-height:48px; }
+
+  .sec-head{ gap:8px 12px; margin-bottom:20px; }
+  .sec-head h2{ font-size:19px; padding:10px 16px; border-radius:9px; }
+  .sec-head .rule-note{ margin-left:0; text-align:left; flex-basis:100%; }
+  .fr{ font-size:15px; }
+
+  section{ padding-top:38px; }
+  .panel{ padding-bottom:56px; }
+
+  .entry{ padding:13px 14px; }
+  .entry h3{ font-size:16.5px; }
+  .entry .when{ white-space:normal; }
+  .leg{ font-size:11.5px; gap:5px 7px; }
+  .leg span{ padding:2px 7px; }
+  .chip, .who{ font-size:9.5px; padding:3px 7px; letter-spacing:.1em; }
+
+  .compare{ grid-template-columns:1fr; gap:14px; }
+  .opt{ padding:16px; }
+  .opt-head h3{ font-size:21px; }
+  .spec{ grid-template-columns:1fr; gap:2px 0; }
+  .spec dt{ padding-top:10px; }
+  .spec dd{ padding-bottom:2px; }
+
+  .notes{ gap:18px; }
+  .recgrid{ grid-template-columns:1fr; gap:0; }
+  .todo li{ gap:11px; }
+
+  /* forms: 16px inputs so iOS doesn't zoom on focus */
+  .form{ grid-template-columns:1fr; gap:11px; }
+  .field input,.field select,.field textarea{ font-size:16px; padding:13px 12px; }
+  .btn{ width:100%; padding:14px 20px; min-height:48px; }
+  .actions{ gap:10px; }
+  .addbox{ padding:16px; }
+
+  .foot .wrap{ gap:6px; }
+  body::before{ opacity:.55; }
+}
+@media (max-width:400px){
+  .stamps{ gap:8px 16px; }
+  .sec-head h2{ font-size:17.5px; }
+}
+
+@media (max-width:760px){
+  .tab{ padding:17px 6px 14px; }
+  .sec-head{ margin-bottom:14px; }
+  .sec-head .rule-note{ margin-top:-2px; }
+  .days{ margin-top:6px; }
+  .day{ padding:18px 0; }
+}
 </style>
 </head>
 <body>
@@ -227,12 +404,13 @@ section{padding-top:clamp(40px,6vw,66px);}
     <section>
       <div class="sec-head">
         <h2>Itinerary</h2>
+        <span class="fr">L’itinéraire</span>
         <span class="eyebrow rule-note">19&ndash;24 September</span>
       </div>
       <div class="days">
 
         <article class="day">
-          <div class="daymark"><span class="dow">Sat</span><span class="dnum">19</span><span class="mon">Sept</span></div>
+          <div class="daymark"><span class="dow">Sam</span><span class="dnum">19</span><span class="mon">Septembre</span></div>
           <div class="entries">
             <div class="entry">
               <div class="entry-top">
@@ -250,7 +428,7 @@ section{padding-top:clamp(40px,6vw,66px);}
         </article>
 
         <article class="day">
-          <div class="daymark"><span class="dow">Sun</span><span class="dnum">20</span><span class="mon">Sept</span></div>
+          <div class="daymark"><span class="dow">Dim</span><span class="dnum">20</span><span class="mon">Septembre</span></div>
           <div class="entries">
             <div class="entry">
               <div class="entry-top">
@@ -282,7 +460,7 @@ section{padding-top:clamp(40px,6vw,66px);}
         </article>
 
         <article class="day">
-          <div class="daymark"><span class="dow">Mon</span><span class="dnum">21</span><span class="mon">Sept</span></div>
+          <div class="daymark"><span class="dow">Lun</span><span class="dnum">21</span><span class="mon">Septembre</span></div>
           <div class="entries">
             <div class="entry">
               <div class="entry-top">
@@ -296,7 +474,7 @@ section{padding-top:clamp(40px,6vw,66px);}
         </article>
 
         <article class="day">
-          <div class="daymark"><span class="dow">Tue</span><span class="dnum">22</span><span class="mon">Sept</span></div>
+          <div class="daymark"><span class="dow">Mar</span><span class="dnum">22</span><span class="mon">Septembre</span></div>
           <div class="entries">
             <div class="entry">
               <div class="entry-top">
@@ -309,7 +487,7 @@ section{padding-top:clamp(40px,6vw,66px);}
         </article>
 
         <article class="day">
-          <div class="daymark"><span class="dow">Wed</span><span class="dnum">23</span><span class="mon">Sept</span></div>
+          <div class="daymark"><span class="dow">Mer</span><span class="dnum">23</span><span class="mon">Septembre</span></div>
           <div class="entries">
             <div class="entry muted">
               <div class="entry-top"><h3>Nothing booked</h3></div>
@@ -318,7 +496,7 @@ section{padding-top:clamp(40px,6vw,66px);}
         </article>
 
         <article class="day">
-          <div class="daymark"><span class="dow">Thu</span><span class="dnum">24</span><span class="mon">Sept</span></div>
+          <div class="daymark"><span class="dow">Jeu</span><span class="dnum">24</span><span class="mon">Septembre</span></div>
           <div class="entries">
             <div class="entry">
               <div class="entry-top">
@@ -344,6 +522,7 @@ section{padding-top:clamp(40px,6vw,66px);}
     <section>
       <div class="sec-head">
         <h2>Getting to Paris</h2>
+        <span class="fr">Monter à Paris</span>
         <span class="eyebrow rule-note">Thursday 24 September</span>
       </div>
       <div class="compare">
@@ -373,6 +552,7 @@ section{padding-top:clamp(40px,6vw,66px);}
     <section>
       <div class="sec-head">
         <h2>Recommendations</h2>
+        <span class="fr">Les bonnes adresses</span>
         <span class="eyebrow rule-note">Biarritz &amp; the Basque coast</span>
       </div>
 
@@ -429,7 +609,8 @@ section{padding-top:clamp(40px,6vw,66px);}
     </section>
 
     <section>
-      <div class="sec-head"><h2>Practical</h2></div>
+      <div class="sec-head"><h2>Practical</h2>
+        <span class="fr">À savoir</span></div>
       <div class="notes">
         <div class="note"><h4>Weather</h4><p>Late September highs around 21&ndash;22&deg;C, lows in the low teens. September is the driest month on this coast.</p></div>
         <div class="note"><h4>Tipping</h4><p>Service is included by law. Rounding up is normal; percentage tipping is not expected.</p></div>
@@ -446,6 +627,7 @@ section{padding-top:clamp(40px,6vw,66px);}
     <section>
       <div class="sec-head">
         <h2>Open items</h2>
+        <span class="fr">À régler</span>
         <span class="eyebrow rule-note">Needs a decision</span>
       </div>
       <ol class="todo">
@@ -457,6 +639,7 @@ section{padding-top:clamp(40px,6vw,66px);}
     <section>
       <div class="sec-head">
         <h2>The party</h2>
+        <span class="fr">La bande</span>
         <span class="eyebrow rule-note">Four</span>
       </div>
       <div class="compare">
@@ -487,11 +670,12 @@ section{padding-top:clamp(40px,6vw,66px);}
     <section>
       <div class="sec-head">
         <h2>Itinerary</h2>
+        <span class="fr">L’itinéraire</span>
         <span class="eyebrow rule-note">24&ndash;27 September</span>
       </div>
       <div class="days">
         <article class="day">
-          <div class="daymark"><span class="dow">Thu</span><span class="dnum">24</span><span class="mon">Sept</span></div>
+          <div class="daymark"><span class="dow">Jeu</span><span class="dnum">24</span><span class="mon">Septembre</span></div>
           <div class="entries">
             
             <div class="entry">
@@ -519,7 +703,7 @@ section{padding-top:clamp(40px,6vw,66px);}
           </div>
         </article>
         <article class="day">
-          <div class="daymark"><span class="dow">Fri</span><span class="dnum">25</span><span class="mon">Sept</span></div>
+          <div class="daymark"><span class="dow">Ven</span><span class="dnum">25</span><span class="mon">Septembre</span></div>
           <div class="entries">
             <div class="entry muted">
               <div class="entry-top"><h3>Nothing booked</h3><span class="who all">All four</span></div>
@@ -527,7 +711,7 @@ section{padding-top:clamp(40px,6vw,66px);}
           </div>
         </article>
         <article class="day">
-          <div class="daymark"><span class="dow">Sat</span><span class="dnum">26</span><span class="mon">Sept</span></div>
+          <div class="daymark"><span class="dow">Sam</span><span class="dnum">26</span><span class="mon">Septembre</span></div>
           <div class="entries">
             <div class="entry muted">
               <div class="entry-top"><h3>Nothing booked</h3><span class="who all">All four</span></div>
@@ -535,7 +719,7 @@ section{padding-top:clamp(40px,6vw,66px);}
           </div>
         </article>
         <article class="day">
-          <div class="daymark"><span class="dow">Sun</span><span class="dnum">27</span><span class="mon">Sept</span></div>
+          <div class="daymark"><span class="dow">Dim</span><span class="dnum">27</span><span class="mon">Septembre</span></div>
           <div class="entries">
             <div class="entry">
               <div class="entry-top"><h3>Leave for CDG</h3><span class="when">~8:15 AM</span><span class="who">Christa</span></div>
@@ -575,6 +759,7 @@ section{padding-top:clamp(40px,6vw,66px);}
     <section>
       <div class="sec-head">
         <h2>Two nights being planned</h2>
+        <span class="fr">Les deux soirées</span>
         <span class="eyebrow rule-note">24 or 25 September</span>
       </div>
       <div class="compare">
@@ -607,6 +792,7 @@ section{padding-top:clamp(40px,6vw,66px);}
     <section>
       <div class="sec-head">
         <h2>Recommendations</h2>
+        <span class="fr">Les bonnes adresses</span>
         <span class="eyebrow rule-note">Paris</span>
       </div>
 
@@ -730,7 +916,8 @@ section{padding-top:clamp(40px,6vw,66px);}
     </section>
 
     <section>
-      <div class="sec-head"><h2>Practical</h2></div>
+      <div class="sec-head"><h2>Practical</h2>
+        <span class="fr">À savoir</span></div>
       <div class="notes">
         <div class="note"><h4>Weather</h4><p>Late September highs near 20&deg;C, falling to about 12&deg;C after dark. Rain is likely at some point.</p></div>
         <div class="note"><h4>Sunday</h4><p>Many restaurants and most shops close on Sunday. Confirm hours before planning the last day.</p></div>
