@@ -435,6 +435,23 @@ html{ overflow-x:clip; }
 body{ overflow-x:clip; overflow-y:visible; }
 
 @media (min-width:761px){ .subnav-link.copy{ margin-left:auto; } }
+
+/* tentative entries: dashed rail, so "not booked yet" reads at a glance */
+.entry.tentative{
+  border-left-style:dashed;
+  border-left-color:var(--wait-fg);
+  background:color-mix(in srgb, var(--card) 88%, var(--wait-bg));
+}
+.chip.tent{ background:var(--wait-bg); color:var(--wait-fg); }
+
+.rec-del{
+  background:none; border:0; padding:0 0 0 8px; cursor:pointer;
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-3); text-decoration:underline; text-underline-offset:2px;
+}
+.rec-del:hover{ color:var(--accent); }
+.rec-del[disabled]{ opacity:.5; cursor:default; }
 </style>
 </head>
 <body>
@@ -781,21 +798,38 @@ body{ overflow-x:clip; overflow-y:visible; }
               <div class="entry-top"><h3>Check in &mdash; Le Grand H&ocirc;tel Cayr&eacute;</h3><span class="when">15:00</span><span class="who">Christa</span><span class="chip ok">Booked</span></div>
               <div class="conf">Confirmation <b>ARMXDTEM-1</b></div>
             </div>
+            <div class="entry tentative">
+              <div class="entry-top"><h3>Drinks &mdash; Bar Hemingway</h3><span class="when">evening</span><span class="who all">All four</span><span class="chip tent">Tentative</span></div>
+              <p class="detail">The Ritz, Place Vend&ocirc;me, 1er. Twenty-five seats and no reservations &mdash; arrive at opening or expect to wait. Smart dress.</p>
+            </div>
+            <div class="entry tentative">
+              <div class="entry-top"><h3>Dinner &mdash; Gigi</h3><span class="when">8:00&ndash;9:30 PM</span><span class="who all">All four</span><span class="chip tent">Tentative</span></div>
+              <p class="detail">Avenue Montaigne, 8e. Fifteen minutes from the Ritz. <b>Not booked</b> &mdash; the reservation watch runs daily from 10 September and will flag a table the moment one opens.</p>
+            </div>
           </div>
         </article>
         <article class="day">
           <div class="daymark"><span class="dow">Ven</span><span class="dnum">25</span><span class="mon">Septembre</span></div>
           <div class="entries">
-            <div class="entry muted">
-              <div class="entry-top"><h3>Nothing booked</h3><span class="who all">All four</span></div>
+            <div class="entry tentative">
+              <div class="entry-top"><h3>Crazy Horse</h3><span class="when">show, time TBD</span><span class="who all">All four</span><span class="chip tent">Tentative</span></div>
+              <p class="detail">Avenue George V, 8e. About 90 minutes. Nadia is in provided the day doesn&rsquo;t bend around it; Megan is asking friends. Not booked.</p>
+            </div>
+            <div class="entry tentative">
+              <div class="entry-top"><h3>Dinner after</h3><span class="who all">All four</span><span class="chip tent">Tentative</span></div>
+              <p class="detail">Bonnie at SO/ Paris is the idea, though it&rsquo;s across the city from George V &mdash; if the show runs late, eat first and take the later show. Lap&eacute;rouse is the backup Megan floated. Neither booked.</p>
             </div>
           </div>
         </article>
         <article class="day">
           <div class="daymark"><span class="dow">Sam</span><span class="dnum">26</span><span class="mon">Septembre</span></div>
           <div class="entries">
+            <div class="entry tentative">
+              <div class="entry-top"><h3>The flea at Vanves</h3><span class="when">8:00&ndash;10:00 AM</span><span class="who all">All four</span><span class="chip tent">Tentative</span></div>
+              <p class="detail">Nadia&rsquo;s research: Vanves rather than Saint-Ouen, because it&rsquo;s smaller and doesn&rsquo;t eat the day. Coffee after, then Saint-Germain or the Marais for lunch and shopping. Foire de Chatou is the swap if the group wants serious antiques.</p>
+            </div>
             <div class="entry muted">
-              <div class="entry-top"><h3>Nothing booked</h3><span class="who all">All four</span></div>
+              <div class="entry-top"><h3>Rest of the day open</h3><span class="who all">All four</span></div>
             </div>
           </div>
         </article>
@@ -1164,13 +1198,14 @@ body{ overflow-x:clip; overflow-y:visible; }
         '</div>' +
         (r.note ? '<p>' + esc(r.note) + '</p>' : '') +
         (link ? '<a class="lnk" href="' + esc(link) + '" target="_blank" rel="noopener noreferrer">Open link</a>' : '') +
-        '<div class="by">' + esc(r.submitter || "Unattributed") + '</div>' +
+        '<div class="by">' + esc(r.submitter || "Unattributed") +
+          ' <button type="button" class="rec-del" data-del="' + esc(r.id) + '">Remove</button></div>' +
         '</div>';
     }).join("");
   }
 
   function load(){
-    return fetch(SB_URL + "/rest/v1/trip_recs?select=city,category,submitter,place,note,link,created_at&order=created_at.desc", {
+    return fetch(SB_URL + "/rest/v1/trip_recs?select=id,city,category,submitter,place,note,link,created_at&order=created_at.desc", {
       headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY }
     }).then(function(r){
       if(!r.ok) throw new Error("load failed");
@@ -1234,6 +1269,28 @@ body{ overflow-x:clip; overflow-y:visible; }
       }).then(function(){ btn.disabled = false; });
     });
   });
+
+  /* ---- remove a group-added item ---- */
+  document.addEventListener("click", function(e){
+    var btn = e.target.closest ? e.target.closest("[data-del]") : null;
+    if(!btn) return;
+    var id = btn.getAttribute("data-del");
+    var row = btn.closest(".rec");
+    var name = row ? (row.querySelector("h4") || {}).textContent : "this item";
+    if(!confirm('Remove "' + name + '" from the list? Everyone will stop seeing it.')) return;
+    btn.disabled = true; btn.textContent = "Removing\u2026";
+    fetch(SB_URL + "/rest/v1/trip_recs?id=eq." + encodeURIComponent(id), {
+      method: "DELETE",
+      headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY }
+    }).then(function(r){
+      if(!r.ok) throw new Error("delete failed");
+      return load();
+    }).catch(function(){
+      btn.disabled = false; btn.textContent = "Remove";
+      alert("Couldn't remove that. Try again.");
+    });
+  });
+
 })();
 </script>
 </body>
